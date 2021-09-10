@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "nlc": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\linecount.txt"
+    }
+  }
+}
