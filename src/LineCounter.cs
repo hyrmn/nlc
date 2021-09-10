@@ -2,7 +2,7 @@ namespace nlc;
 
 public class LineCounter
 {
-    public const int BufferSize = 16 * 1024;
+    public const int BufferSize = 64 * 1024;
     private const byte rune = (byte)'\n';
 
     public int CountLines(Stream stream)
