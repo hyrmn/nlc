@@ -2,7 +2,7 @@
 
 This is a small command-line utility to count lines in text. That's it. That's all it does. Technically, it doesn't even care if it's text. 
 
-This is the .NET Core version of my [Golang-based line counter](https://github.com/hyrmn/lc).
+This is the .NET 6.0 version of my [Golang-based line counter](https://github.com/hyrmn/lc). If you're interested in a faster, but also harder to read, .NET version, then check out [my version that leverages intrinsics](https://github.com/hyrmn/fnlc)
 
 There are some counting assumptions that I made. I had originally chosen to have this match my editor's line count. That is, if Visual Studio Code shows `x` lines then my logic would also show `x` lines. However, I've chosen to follow the behavior of `wc -l`. I count carriage returns (`\n`). If a file does not end with a carriage return then the last line will not be counted.
 
@@ -14,7 +14,7 @@ Clone this repository and then run `dotnet build` from the solution root.
 > dotnet build -c Release --nologo
 ```
 
-This will create a release build of the utility at `/nlc/bin/Release/netcoreapp3.1/nlc.exe`. From there, you will need to copy it to a place in your `%PATH%`.
+This will create a release build of the utility at `/nlc/bin/Release/net6.0/nlc.exe`. From there, you will need to copy it to a place in your `%PATH%`.
 
 ## How to Use
 
