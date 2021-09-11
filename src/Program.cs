@@ -1,11 +1,10 @@
 ﻿using nlc;
 
-var counter = new LineCounter();
 var count = 0;
 
 if (Console.IsInputRedirected)
 {
-    count = counter.CountLines(Console.OpenStandardInput());
+    count = Counter.CountLines(Console.OpenStandardInput());
 }
 else
 {
@@ -14,16 +13,14 @@ else
         Console.WriteLine("Usage:\n\tlc \"path\\to\\file.txt\"");
         return;
     }
-
-    try
-    {
-        using var file = new FileStream(args[0], FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: LineCounter.BufferSize, FileOptions.SequentialScan);
-        count = counter.CountLines(file);
-    }
-    catch (FileNotFoundException)
+    if (!File.Exists(args[0]))
     {
         Console.WriteLine($"Could not find {args[0]}. Check the file path.");
+        return;
     }
+
+    using var file = new FileStream(args[0], FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: 1, FileOptions.SequentialScan);
+    count = Counter.CountLines(file);
 }
 
 Console.WriteLine(count);
