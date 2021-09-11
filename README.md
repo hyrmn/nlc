@@ -43,20 +43,8 @@ So the full run might look like
 
 ## Runtime Considerations
 
-Using `time` (Unix timing utility) `wc` (Unix word count utility) on my machine to parse a 1.6GB text file of lorem ipsum text, I get the following averages after an initial warmup call:
+There is no timeout when waiting for piped input from stdin. If stdin never ends the stream then `nlc` will hang until it is force-quit (`ctrl+c`).
 
-```
-real    0m0.822s
-user    0m0.156s
-sys     0m0.655s
-```
+## Special Thanks
 
-Using `nlc` to parse the same file, I get the following averages after an initial warmup call:
-
-```
-real    0m0.619s
-user    0m0.000s
-sys     0m0.015s
-```
-
-Note: There is no timeout when waiting for piped input from stdin. If stdin never ends the stream then `nlc` will hang until it is force-quit (`ctrl+c`).
+I'd like to thank [Sergio Pedri](https://twitter.com/SergioPedri/status/1436790264320954370) for his work on the High Performance toolkit. Without it, looking for the number of bytes in a Span is a lot, lot slower.
